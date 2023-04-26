@@ -152,8 +152,6 @@ class DynamicArray:
         self._capacity = new_capacity
         self._data = new_arr
 
-
-
     def append(self, value: object) -> None:
         """
         Adds a value to the end of the dynamic array.
@@ -168,12 +166,26 @@ class DynamicArray:
         self._data[self._size] = value
         self._size += 1
 
-
     def insert_at_index(self, index: int, value: object) -> None:
         """
-        TODO: Write this implementation
+        Adds a new value at a specific index in the dynamic array
         """
-        pass
+
+        # Raises exception if index is invalid
+        if index < 0 or index > self._size:
+            raise DynamicArrayException
+
+        # If array is full call the resize() method
+        if self._size == self._capacity:
+            self.resize(self._capacity*2)
+
+        # Shift elements to the right of the index over by 1
+        for i in range(self._size, index, -1):
+            self._data[i] = self._data[i-1]
+
+        # Insert the new value at the index and update the size
+        self._data[index] = value
+        self._size += 1
 
     def remove_at_index(self, index: int) -> None:
         """
