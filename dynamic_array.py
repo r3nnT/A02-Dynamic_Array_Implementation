@@ -194,7 +194,7 @@ class DynamicArray:
         """
 
         # Checks if index is valid
-        if index < 0 or index > self._size:
+        if index < 0 or index >= self._size:
             raise DynamicArrayException
 
         # Checks if capacity needs to be reduced
