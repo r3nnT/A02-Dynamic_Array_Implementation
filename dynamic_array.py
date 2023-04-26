@@ -180,8 +180,9 @@ class DynamicArray:
             self.resize(self._capacity*2)
 
         # Shift elements to the right of the index over by 1
+
         for i in range(self._size, index, -1):
-            self._data[i] = self._data[i-1]
+                self._data[i] = self._data[i-1]
 
         # Insert the new value at the index and update the size
         self._data[index] = value
@@ -203,9 +204,15 @@ class DynamicArray:
                 new_capacity = 10
             self.resize(new_capacity)
 
-        # Shifts elements to the left by 1
-        for i in range(index, self._size - 1):
-            self._data[i] = self._data[i+1]
+        # Checks if element is at index 0
+        if index == 0:
+            self._data[0] = None
+            for i in range(1,self._size):
+                self._data[i-1] = self._data[i]
+        else:
+            # Shifts elements to the left by 1
+            for i in range(index, self._size - 1):
+                self._data[i] = self._data[i+1]
 
         # Set the last element to None and update the size
         self._data[self._size-1] = None
