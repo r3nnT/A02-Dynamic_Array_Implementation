@@ -189,9 +189,28 @@ class DynamicArray:
 
     def remove_at_index(self, index: int) -> None:
         """
-        TODO: Write this implementation
+        Removes the element at the specified index in the dynamic array
         """
-        pass
+
+        # Checks if index is valid
+        if index < 0 or index > self._size:
+            raise DynamicArrayException
+
+        # Checks if capacity needs to be reduced
+        if self._size < self._capacity / 4 and self._capacity > 10:
+            new_capacity = self._size * 2
+            if new_capacity < 10:
+                new_capacity = 10
+            self.resize(new_capacity)
+
+        # Shifts elements to the left by 1
+        for i in range(index, self._size - 1):
+            self._data[i] = self._data[i+1]
+
+        # Set the last element to None and update the size
+        self._data[self._size-1] = None
+        self._size -= 1
+
 
     def slice(self, start_index: int, size: int) -> "DynamicArray":
         """
