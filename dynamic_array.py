@@ -222,16 +222,12 @@ class DynamicArray:
         """
         Returns requested number of elements from the original arrayuj
         """
-        n = 0
-
-        for val in self._data:
-            n += 1
 
         # Check if the start index and size are valid
         if start_index < 0 or \
-           start_index >= n or \
+           start_index >= self._size or \
            size < 0 or \
-           start_index + size > n:
+           start_index + size > self._size:
 
             raise DynamicArrayException
 
