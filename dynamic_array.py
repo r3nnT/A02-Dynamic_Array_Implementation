@@ -231,8 +231,15 @@ class DynamicArray:
 
             raise DynamicArrayException
 
+        # Create a new array with size elements
+        new_arr = DynamicArray([None]*size)
+
+        # Populate the new array starting at the start_index
+        for i in range(size):
+            new_arr._data[i] = self._data[start_index + i]
+
         # If valid return the requested slice of the array
-        return DynamicArray(self._data[start_index:start_index+size])
+        return new_arr
 
     def merge(self, second_da: "DynamicArray") -> None:
         """
