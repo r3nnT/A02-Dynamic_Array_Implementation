@@ -218,12 +218,20 @@ class DynamicArray:
         self._data[self._size-1] = None
         self._size -= 1
 
-
     def slice(self, start_index: int, size: int) -> "DynamicArray":
         """
-        TODO: Write this implementation
+        Returns requested number of elements from the original arrayuj
         """
-        pass
+        # Check if the start index and size are valid
+        if start_index < 0 or \
+           start_index >= self._size or \
+           size < 0 or \
+           start_index + size > self._size:
+
+            raise DynamicArrayException
+
+        # If valid return the requested slice of the array
+        return DynamicArray(self._data[start_index:start_index+size])
 
     def merge(self, second_da: "DynamicArray") -> None:
         """
