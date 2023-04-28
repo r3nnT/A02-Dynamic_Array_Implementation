@@ -316,9 +316,35 @@ class DynamicArray:
 
     def reduce(self, reduce_func, initializer=None) -> object:
         """
-        TODO: Write this implementation
+        This method sequentially applies the reduce_func to all elements
+        of the dynamic array and returns the resulting value
         """
-        pass
+
+        # Checks if array is empty, if so returns the initializer
+        if not self._data:
+            return initializer
+
+        # If array is not empty, sets initial value for the reduction value
+        # Sets value to first element in the array and set start index to 1
+        if initializer is None:
+            value = self._data[0]
+            start = 1
+
+        # If initializer is provided, sets value to the initializer
+        # and start index to 0
+        else:
+            value = initializer
+            start = 0
+
+        # Applies the reduce_func to all elements of the array
+        for i in range(start, self._size):
+            if value is None or self._data[i] is None:
+                continue
+
+            # Result by applying reduce_func to all elements
+            value = reduce_func(value, self._data[i])
+
+        return value
 
 
 def find_mode(arr: DynamicArray) -> (DynamicArray, int):
