@@ -261,9 +261,28 @@ class DynamicArray:
 
     def map(self, map_func) -> "DynamicArray":
         """
-        TODO: Write this implementation
+        This method creates a new dynamic array where the value of each element
+        is derived by applying a given map_func to the
+        corresponding value from the original array.
         """
-        pass
+
+        # Create a new array object
+        new_array = DynamicArray()
+
+        # Iterate over the array, applying the map_func to each value
+        # of the original array
+        for i in range(self._size):
+            new_value = map_func(self._data[i])
+
+            # Check if the new array needs resizing
+            if new_array._size == new_array._capacity:
+                new_array.resize(new_array._capacity * 2)
+
+            # Add the new mapped value at the current size
+            new_array._data[new_array._size] = new_value
+            new_array._size += 1
+
+        return new_array
 
     def filter(self, filter_func) -> "DynamicArray":
         """
