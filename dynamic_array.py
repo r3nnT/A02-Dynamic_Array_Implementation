@@ -243,9 +243,21 @@ class DynamicArray:
 
     def merge(self, second_da: "DynamicArray") -> None:
         """
-        TODO: Write this implementation
+        Takes a DynamicArray object as a parameter,
+        and appends all elements from this array onto the current one,
+        in the same order in which they are stored in the input array.
         """
-        pass
+
+        # For loop to append elements in order in which they appear
+        for value in second_da:
+
+            # # CHeck to see if array needs resizing first
+            if self._size == self._capacity:
+                self.resize(self._capacity * 2)
+
+            # Adds value to the end of the array
+            self._data[self._size] = value
+            self._size += 1
 
     def map(self, map_func) -> "DynamicArray":
         """
