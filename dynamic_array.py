@@ -286,9 +286,33 @@ class DynamicArray:
 
     def filter(self, filter_func) -> "DynamicArray":
         """
-        TODO: Write this implementation
+        Similar to the map() method, This method creates a new dynamic array
+        populated only with those elements from the original array
+        for which filter_func returns True.
+
         """
-        pass
+
+        # Create a new array object to store new values
+        new_array = DynamicArray()
+
+        # Iterate to set value to current index of the array
+        # Find values of the filter_func at each index of the array
+        for i in range(self._size):
+            value = self._data[i]
+            filter_value = filter_func(self._data[i])
+
+            # Populate new array with values where filter_value is True
+            if filter_value == True:
+
+                # Check if the new array needs resizing
+                if new_array._size == new_array._capacity:
+                    new_array.resize(new_array._capacity * 2)
+
+                # Add value where filter_value is True
+                new_array._data[new_array._size] = value
+                new_array._size += 1
+
+        return new_array
 
     def reduce(self, reduce_func, initializer=None) -> object:
         """
