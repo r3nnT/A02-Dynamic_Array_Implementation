@@ -124,18 +124,26 @@ class Bag:
                 return False
         return True
 
-
     def __iter__(self):
         """
         TODO: Write this implementation
         """
-        pass
+
+        self._index = 0
+
+        return self
 
     def __next__(self):
         """
         TODO: Write this implementation
         """
-        pass
+        try:
+            value = self._da.get_at_index(self._index)
+        except DynamicArrayException:
+            raise StopIteration
+
+        self._index = self._index + 1
+        return value
 
 
 # ------------------- BASIC TESTING -----------------------------------------
