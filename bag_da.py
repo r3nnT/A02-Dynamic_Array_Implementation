@@ -89,19 +89,41 @@ class Bag:
 
         return num
 
-
-
     def clear(self) -> None:
         """
-        TODO: Write this implementation
+        This method clears the contents of the bag
         """
-        pass
+
+        # Determines the length
+        length = self._da.length()
+
+        # Iterates over the array
+        # Removes in reverse order to keep correct indices
+        for i in range(length-1, -1, -1):
+            self._da.remove_at_index(i)
 
     def equal(self, second_bag: "Bag") -> bool:
         """
-        TODO: Write this implementation
+        This method compares the contents of a bag with the
+        contents of a second bag provided as a parameter
         """
-        pass
+        # Determines the length
+        length = self._da.length()
+
+        # Checks first if bags are the same size
+        if length != second_bag._da.length():
+            return False
+
+        # Iterates over the array
+        # Sets value to current index
+        # Checks if value equals current index of second_bag
+        for i in range(length):
+            value = self._da.get_at_index(i)
+
+            if value == second_bag._da.get_at_index(i):
+                return False
+        return True
+
 
     def __iter__(self):
         """
