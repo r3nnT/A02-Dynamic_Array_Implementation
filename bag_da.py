@@ -70,9 +70,26 @@ class Bag:
 
     def count(self, value: object) -> int:
         """
-        TODO: Write this implementation
+        This method returns the number of elements in the
+        bag that match the provided value object
         """
-        pass
+
+        # Counter for value
+        num = 0
+
+        # Determines the length
+        length = self._da.length()
+
+        # Iterates through the array
+        # Uses get_at_index() to check if its equal to value
+        # num then increments by 1
+        for i in range(length):
+            if self._da.get_at_index(i) == value:
+                num += 1
+
+        return num
+
+
 
     def clear(self) -> None:
         """
