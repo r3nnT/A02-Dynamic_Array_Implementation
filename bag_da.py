@@ -44,15 +44,29 @@ class Bag:
 
     def add(self, value: object) -> None:
         """
-        TODO: Write this implementation
+        Adds values to a bag
         """
-        pass
+        # Uses the Dynamic Array's append method
+        self._da.append(value)
 
     def remove(self, value: object) -> bool:
         """
-        TODO: Write this implementation
+        This method removes any one element from the bag that
+        matches the provided value object
         """
-        pass
+
+        # Determine the length
+        length = self._da.length()
+
+        # Iterates over the array
+        # Checks if current index is equal to the value
+        # If so, calls the remove_at_index() method
+        for i in range(length):
+            if self._da.get_at_index(i) == value:
+                self._da.remove_at_index(i)
+
+                return True
+        return False
 
     def count(self, value: object) -> int:
         """
