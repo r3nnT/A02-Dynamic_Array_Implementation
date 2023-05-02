@@ -107,20 +107,15 @@ class Bag:
         This method compares the contents of a bag with the
         contents of a second bag provided as a parameter
         """
-        # Determines the length
-        length = self._da.length()
 
         # Checks first if bags are the same size
-        if length != second_bag._da.length():
+        if self._da.length() != second_bag._da.length():
             return False
 
         # Iterates over the array
-        # Sets value to current index
-        # Checks if value equals current index of second_bag
-        for i in range(length):
-            value = self._da.get_at_index(i)
-
-            if value == second_bag._da.get_at_index(i):
+        # Checks if value doesn't equal current index of second_bag
+        for i in self._da:
+            if self.count(i) != second_bag.count(i):
                 return False
         return True
 
