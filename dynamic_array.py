@@ -353,6 +353,8 @@ def find_mode(arr: DynamicArray) -> (DynamicArray, int):
     a dynamic array comprising the mode (most-occurring) value/s of the array,
     and an integer that represents the highest frequency (how many times they appear).
     """
+
+    modes = DynamicArray()
     max = 0
     length = arr.length()
 
@@ -366,11 +368,13 @@ def find_mode(arr: DynamicArray) -> (DynamicArray, int):
         # Checks if the current count is bigger than the max
         if count > max:
             max = count
+            modes.append(arr[i])
+        elif count == max:
+            modes.append(arr[i])
 
-    return arr, max
+    return modes, max
 
 # ------------------- BASIC TESTING -----------------------------------------
-
 
 if __name__ == "__main__":
 
