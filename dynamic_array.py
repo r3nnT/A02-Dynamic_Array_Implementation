@@ -355,6 +355,23 @@ def find_mode(arr: DynamicArray) -> (DynamicArray, int):
 
     """
 
+    mode = None
+    max = 0
+    length = arr.length()
+
+    # Loop to determine how many times a certain index occurs
+    for i in range(length):
+        count = 0
+        for j in range(length):
+            if arr[j] == arr[i]:
+                count += 1
+
+        # Checks if the current count is bigger than the max
+        if count > max:
+            max = count
+            mode = arr[i]
+
+    return mode, max
 
 # ------------------- BASIC TESTING -----------------------------------------
 
