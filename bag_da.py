@@ -126,7 +126,7 @@ class Bag:
 
     def __iter__(self):
         """
-        TODO: Write this implementation
+        This method enables the Bag to iterate across itself
         """
 
         self._index = 0
@@ -135,7 +135,8 @@ class Bag:
 
     def __next__(self):
         """
-        TODO: Write this implementation
+        This method will return the next item in the Bag,
+        based on the current location of the iterator.
         """
         try:
             value = self._da.get_at_index(self._index)
