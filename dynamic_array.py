@@ -352,10 +352,7 @@ def find_mode(arr: DynamicArray) -> (DynamicArray, int):
     unction will return a tuple containing (in this order)
     a dynamic array comprising the mode (most-occurring) value/s of the array,
     and an integer that represents the highest frequency (how many times they appear).
-
     """
-
-    mode = None
     max = 0
     length = arr.length()
 
@@ -369,9 +366,8 @@ def find_mode(arr: DynamicArray) -> (DynamicArray, int):
         # Checks if the current count is bigger than the max
         if count > max:
             max = count
-            mode = arr[i]
 
-    return mode, max
+    return arr, max
 
 # ------------------- BASIC TESTING -----------------------------------------
 
