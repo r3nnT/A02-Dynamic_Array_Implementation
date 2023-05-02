@@ -368,8 +368,7 @@ def find_mode(arr: DynamicArray) -> (DynamicArray, int):
         # Checks if the current count is bigger than the max
         if count > max:
             max = count
-            modes.append(arr[i])
-        elif count == max:
+            modes = DynamicArray()
             modes.append(arr[i])
 
     return modes, max
